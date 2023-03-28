@@ -10,6 +10,41 @@
   </head>
 
   <body>
+    <header>
+      <div class='header-logo'>
+        <% if @current_user %>
+          <%= link_to('FavoriteApp', '/spots/index') %>
+        <% else %>
+          <%= link_to('FavoriteApp', '/') %>
+        <% end %>
+      </div>
+      <ul class='header-menus'>
+        <% if @current_user %>
+          <li>
+            <%= link_to(@current_user.name, '/spots/#{@current_user.id}') %>
+          </li>
+          <li>
+            <%= link_to('投稿一覧', '/spots/index') %>
+          </li>
+          <li>
+            <%= link_to('新規投稿', '/spots/new') %>
+          </li>
+          <li>
+            <%= link_to('ユーザー一覧', '/spots/index') %>
+          </li>
+          <li>
+            <%= link_to('ログアウト', '/users/sign_out', {method: 'post'}) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to('新規登録', '/users/sign_up') %>
+          </li>
+          <li>
+            <%= link_to('ログイン', '/users/sign_in') %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
     <%= yield %>
   </body>
 </html>
