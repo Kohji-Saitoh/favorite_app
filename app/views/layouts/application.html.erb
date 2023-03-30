@@ -12,11 +12,7 @@
   <body>
     <header>
       <div class='header-logo'>
-        <% if @current_user %>
-          <%= link_to('FavoriteApp', '/spots/index') %>
-        <% else %>
-          <%= link_to('FavoriteApp', '/') %>
-        <% end %>
+        <%= link_to('トップページ', '/') %>
       </div>
       <div class='header-menu'>
         <%- if current_user %>
@@ -24,11 +20,11 @@
 
         <%- else %>
           <%- if controller_name != 'sessions' %>
-              <%= link_to "Log in", new_session_path(resource_name) %><br />
+              <%= link_to "ログイン", new_session_path(resource_name) %><br />
           <% end %>
 
           <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-              <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+              <%= link_to "アカウント作成", new_registration_path(resource_name) %><br />
           <% end %>
 
         <%- end %>
