@@ -13,10 +13,13 @@
 ActiveRecord::Schema.define(version: 2023_03_31_052318) do
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "spot_id"
+    t.bigint "user_id"
+    t.bigint "spot_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["spot_id"], name: "index_likes_on_spot_id"
+    t.index ["user_id", "spot_id"], name: "index_likes_on_user_id_and_spot_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "spots", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -38,4 +41,6 @@ ActiveRecord::Schema.define(version: 2023_03_31_052318) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "likes", "spots"
+  add_foreign_key "likes", "users"
 end
