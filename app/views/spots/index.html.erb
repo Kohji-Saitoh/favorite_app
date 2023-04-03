@@ -1,6 +1,7 @@
 <% @spots.each do |spot| %>
 
   <%= spot.name %>
+  
   <% if user_signed_in? %>
 
     <% if current_user.liked?(spot) %>
