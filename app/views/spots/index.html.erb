@@ -11,7 +11,7 @@
       <% end %>
     <% else %>
       <%= link_to spot_likes_path(spot), method: :post do %>
-        <span class="fa fa-heart unliked-btn"></span>
+        <span class="fa fa-heart-o unliked-btn"></span>
         <span class="like__count"><%= spot.likes.count %></span>
       <% end %>
     <% end %>
