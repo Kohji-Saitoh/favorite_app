@@ -40,8 +40,8 @@ favorite_app
 | spot_id  | bigint  | null: false |
 
 ### Association
-belongs_to :user
-belongs_to :spot
+* belongs_to :user
+* belongs_to :spot
 
 ## 開発環境
 Ruby / Ruby on Rails / MySQL / Github / Visual Studio Code
