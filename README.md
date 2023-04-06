@@ -1,24 +1,48 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリケーション名
+favorite_app
 
-Things you may want to cover:
+## アプリケーション概要
+投稿をお気に入り登録するアプリケーション
 
-* Ruby version
 
-* System dependencies
+## アプリケーション作成背景
+（例）こういうアプリを作りました。こういうサービスがあれば便利だと思い、このアプリを作成しました。みたいな構成がGood
+ポートフォリオ作成のためにお気に入り登録機能を実装したアプリケーションを作成しました。
 
-* Configuration
+## データベース設計
+![サンプル画像](app/assets/images/er.png)
 
-* Database creation
 
-* Database initialization
+## テーブル設計
 
-* How to run the test suite
+## usersテーブル
+| Colum    | Type    | Options     |
+| -------- | ------- | ----------- |
+| email    | string  | null: false |
+| name     | string  | null: false |
+| password | string  | null: false |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+* has_many :likes
 
-* Deployment instructions
+## spotsテーブル
+| Colum    | Type    | Options     |
+| -------- | ------- | ----------- |
+| name     | string  |             |
+### Association
+* has_many :likes
 
-* ...
+## likesテーブル
+| Colum    | Type    | Options     |
+| -------- | ------- | ----------- |
+| user_id  | bigint  | null: false |
+| spot_id  | bigint  | null: false |
+
+### Association
+belongs_to :user
+belongs_to :spot
+
+## 開発環境
+Ruby / Ruby on Rails / MySQL / Github / Visual Studio Code
